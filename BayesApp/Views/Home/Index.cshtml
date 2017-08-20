@@ -8,4 +8,21 @@
 
 <div class="jumbotron">
     <p>This is a test application for a naive bayes classifier.</p>
+    
+    <br />
+    
+    <button id="weatherBtn">Get Weather</button>
+
+    <script>
+        //(function () {
+            $("#weatherBtn").on('click', function () {
+
+                $.get('/Weather/GetWeather', function () {
+
+                });
+
+            });
+        //});
+
+    </script>
 </div>
