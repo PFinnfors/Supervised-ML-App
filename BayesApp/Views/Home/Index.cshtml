@@ -8,9 +8,9 @@
 
 <div class="jumbotron">
     <p>Naive Bayes Classifier using <text style="color:royalblue">Accord.NET</text> and Mitchell's Tennis Example</p>
-    
+
     <hr style="border-bottom:1px solid #808080" />
-    
+
     <form method="post">
 
         <div class="row">
@@ -30,22 +30,42 @@
         <div class="row">
             <div class="col-md-3">HUMIDITY</div>
             <div class="col-md-3">@Html.RadioButton("Humidity", "High") High</div>
-            <div class="col-md-6">@Html.RadioButton("Humidity", "Normal") Normal</div>
+            <div class="col-md-3">@Html.RadioButton("Humidity", "Normal") Normal</div>
+            <div class="col-md-3">@Html.RadioButton("Humidity", "Normal") Low</div>
         </div>
 
         <div class="row">
             <div class="col-md-3">WIND</div>
             <div class="col-md-3">@Html.RadioButton("Wind", "Strong") Strong</div>
-            <div class="col-md-6">@Html.RadioButton("Wind", "Weak") Weak</div>
+            <div class="col-md-3">@Html.RadioButton("Wind", "Medium") Medium</div>
+            <div class="col-md-3">@Html.RadioButton("Wind", "Weak") Weak</div>
         </div>
 
         <hr style="border-bottom:1px solid #808080" />
 
         <div class="row">
             <div class="col-md-2">
-                <input type="submit" />
+                <input type="submit" value=" Should I play Tennis? " />
             </div>
-            <div class="col-md-10" style="color:red">
+            <div class="col-md-9 col-md-push-1">
+                @{
+                    //TEMPORARY
+                    if (Request.HttpMethod == "POST" && ViewData.ModelState.IsValid)
+                    {
+                        if (Model.TennisAnswer[0] == "Yes")
+                        {
+                            <h3 style="color:forestgreen">@Model.TennisAnswer[0] (with @Model.TennisAnswer[1]% certainty).</h3>
+                        }
+                        else
+                        {
+                            <h3 style="color:red">@Model.TennisAnswer[0] (with @Model.TennisAnswer[2]% certainty).</h3>
+                        }
+                    }
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="color:red">
                 @Html.ValidationSummary()
             </div>
         </div>

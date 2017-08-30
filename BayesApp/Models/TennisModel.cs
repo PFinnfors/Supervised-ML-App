@@ -15,5 +15,7 @@ namespace BayesApp.Models
 
         [Required]
         public string Wind { get; set; }
+
+        public string[] TennisAnswer { get; set; }
     }
 }

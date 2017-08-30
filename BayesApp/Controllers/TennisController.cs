@@ -3,6 +3,7 @@ using Accord.MachineLearning.Bayes;
 using Accord.Math;
 using Accord.Statistics.Filters;
 using BayesApp.Models;
+using System;
 using System.Data;
 using System.Web.Mvc;
 
@@ -21,7 +22,7 @@ namespace BayesApp.Controllers
             TennisCodebook = GetTennisCodebook(TennisDataSet);
         }
 
-        public void GetTennisAnswer(TennisModel model)
+        public string[] GetTennisAnswer(TennisModel model)
         {
             // Extract input and output pairs to train
             DataTable symbols = TennisCodebook.Apply(TennisDataSet);
@@ -32,8 +33,21 @@ namespace BayesApp.Controllers
             var learner = new NaiveBayesLearning();
             NaiveBayes nb = learner.Learn(inputs, outputs);
 
-            //
+            //Run user input into accord.net bayes to get an integer value decision for "PlayTennis"
             int[] instance = TennisCodebook.Transform(model.Outlook, model.Temperature, model.Humidity, model.Wind);
+            int c = nb.Decide(instance);
+
+            //Get a Yes / No answer, as well as the "probabilities" calculated by the bayesian
+            string result = TennisCodebook.Revert("PlayTennis", c);
+            double[] probs = nb.Probabilities(instance); // { e.g. 0.795, 0.205 }
+
+            //Convert to percentages
+            probs[0] = probs[0] * 100;
+            probs[1] = probs[1] * 100;
+            
+            //Return the answer in two formats
+            string[] answerValues = new string[3] {result, probs[0].ToString("#.0"), probs[1].ToString("#.0")};
+            return answerValues;
         }
 
         public DataTable InitTennisDataSet()
