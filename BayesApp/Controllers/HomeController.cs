@@ -22,14 +22,13 @@ namespace BayesApp.Controllers
                 using (var tennisCtrl = new TennisController())
                 {
                     tennisCtrl.GetTennisAnswer(tennis);
+                    return View(tennis);
                 }
             }
             else
             {
                 return View(tennis);
             }
-
-            return View(tennis);
         }
     }
 }
