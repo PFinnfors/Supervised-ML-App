@@ -1,27 +1,74 @@
-﻿
+﻿@model BayesApp.Models.TennisModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Index";
 }
 
-<h2>Bayes App</h2>
+<h2>Supervised Machine Learning <span class="glyphicon glyphicon-wrench"></span></h2>
 
 <div class="jumbotron">
-    <p>This is a test application for a naive bayes classifier.</p>
+    <p>Naive Bayes Classifier using <text style="color:royalblue">Accord.NET</text> and Mitchell's Tennis Example</p>
     
+    <hr style="border-bottom:1px solid #808080" />
+    
+    <form method="post">
+
+        <div class="row">
+            <div class="col-md-3">OUTLOOK</div>
+            <div class="col-md-3">@Html.RadioButton("Outlook", "Sunny") Sunny</div>
+            <div class="col-md-3">@Html.RadioButton("Outlook", "Overcast") Overcast</div>
+            <div class="col-md-3">@Html.RadioButton("Outlook", "Rain") Rain</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">TEMPERATURE</div>
+            <div class="col-md-3">@Html.RadioButton("Temperature", "Hot") Hot</div>
+            <div class="col-md-3">@Html.RadioButton("Temperature", "Mild") Mild</div>
+            <div class="col-md-3">@Html.RadioButton("Temperature", "Cool") Cool</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">HUMIDITY</div>
+            <div class="col-md-3">@Html.RadioButton("Humidity", "High") High</div>
+            <div class="col-md-6">@Html.RadioButton("Humidity", "Normal") Normal</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">WIND</div>
+            <div class="col-md-3">@Html.RadioButton("Wind", "Strong") Strong</div>
+            <div class="col-md-6">@Html.RadioButton("Wind", "Weak") Weak</div>
+        </div>
+
+        <hr style="border-bottom:1px solid #808080" />
+
+        <div class="row">
+            <div class="col-md-2">
+                <input type="submit" />
+            </div>
+            <div class="col-md-10" style="color:red">
+                @Html.ValidationSummary()
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<div class="jumbotron">
+    <p>Linear Regression with <text style="color:royalblue">Accord.NET</text> & <text style="color:darkblue">DarkSky Weather API</text></p>
+
     <br />
-    
-    <button id="weatherBtn">Get Weather</button>
+
+    <button disabled="disabled" id="weatherBtn">Get Weather</button>
 
     <script>
         //(function () {
-            $("#weatherBtn").on('click', function () {
+        $("#weatherBtn").on('click', function () {
 
-                $.get('/Weather/GetWeather', function () {
-
-                });
+            $.get('/Weather', function () {
 
             });
+
+        });
         //});
 
     </script>
