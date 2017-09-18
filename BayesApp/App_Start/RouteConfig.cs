@@ -16,7 +16,7 @@ namespace BayesApp
             routes.MapRoute(
                 name: "Weather",
                 url: "Weather/{id}",
-                defaults: new { controller = "Weather", action = "Get", id = UrlParameter.Optional }
+                defaults: new { controller = "Stocks", action = "Get", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "Default",

@@ -124,12 +124,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\TennisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\WeatherController.cs" />
+    <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\TennisModel.cs" />
-    <Compile Include="Models\WeatherModel.cs" />
+    <Compile Include="Models\StocksModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
