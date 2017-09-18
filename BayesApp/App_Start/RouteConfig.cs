@@ -14,8 +14,8 @@ namespace BayesApp
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Weather",
-                url: "Weather/{id}",
+                name: "Stocks",
+                url: "Stocks/{id}",
                 defaults: new { controller = "Stocks", action = "Get", id = UrlParameter.Optional }
             );
             routes.MapRoute(

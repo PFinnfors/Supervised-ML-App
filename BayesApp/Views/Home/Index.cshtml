@@ -85,6 +85,8 @@
             
             $.get('/Stocks', function () {
 
+            }).done(function (data) {
+                alert("Monday Prediction: " + data);
             });
 
         });
